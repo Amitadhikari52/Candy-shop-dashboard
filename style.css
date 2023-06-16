@@ -1,0 +1,68 @@
+body {
+    background-image: url('background.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+}
+
+table {
+    width: 80%;
+    margin: 40px auto;
+    background: rgb(124, 154, 167);
+    border-collapse: collapse;
+}
+
+table.list {
+    text-align: center;
+    width: 100%;
+}
+
+td {
+    border: 1px solid rgb(204, 200, 200);
+    text-align: left;
+    padding: 8px 15px;
+}
+
+tr:nth-child(even),
+table.list thead>tr {
+    background-color: rgb(204, 200, 200);
+}
+
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border: 1px solid rgb(165, 161, 161);
+    border-radius: 4px;
+    color: #333;
+}
+
+input[type="submit"],
+input[type="reset"],
+button {
+    background: #eee;
+    padding: 6px 12px;
+    margin: 15px 0 10px;
+    display: inline-block;
+    border: none;
+    border-radius: 30px;
+    font-size: 1rem;
+    cursor: pointer;
+    outline: none;
+    color: #333;
+    transition: background-color 0.3s;
+}
+
+input[type="submit"]:hover,
+input[type="reset"]:hover,
+button:hover {
+    background: #4b99d8;
+    color: #fff;
+}
+
+table.list th {
+    background-color: #4b99d8;
+    color: #fff;
+    padding: 8px 15px;
+}
