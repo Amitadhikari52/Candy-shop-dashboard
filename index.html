@@ -2,33 +2,29 @@
 
 <head>
     <title>Crud Operation</title>
-    <script type="text/javascript" src="script.js" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" defer></script>
-
     <link type="text/css" rel="stylesheet" href="style.css" />
 </head>
 
 <body>
-    <h1>Candy Shop Seller Dashboard</h1>
     <table>
         <tr>
             <td>
                 <form autocomplete="off" onsubmit="onFormSubmit()">
                     <div>
-                        <label for="productCode">Candy Name</label>
-                        <input type="text" name="productCode" id="productCode">
+                        <label for="name">Candy Name</label>
+                        <input type="text" name="name" id="name">
                     </div>
                     <div>
-                        <label for="product">Description</label>
-                        <input type="text" name="product" id="product">     
+                        <label for="description">Description</label>
+                        <input type="text" name="description" id="description">
                     </div>
                     <div>
                         <label for="quantity">Quantities</label>
-                        <input type="number" name="qty" id="qty">
+                        <input type="number" name="quantity" id="quantity">
                     </div>
                     <div>
-                        <label for="perPrice">Price</label>
-                        <input type="number" name="perPrice" id="perPrice">
+                        <label for="price">Price</label>
+                        <input type="number" name="price" id="price">
                     </div>
 
                     <div class="form_action--button">
@@ -40,7 +36,7 @@
             <td>
                 <table class="list" id="storeList">
                     <thead>
-                        <tr>
+                        <tr>                            
                             <th>Candy Name</th>
                             <th>Description</th>
                             <th>Qty</th>
@@ -55,7 +51,9 @@
             </td>
         </tr>
     </table>
-
+    
+    <script type="text/javascript" src="./script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" defer></script>
 </body>
 
 </html>

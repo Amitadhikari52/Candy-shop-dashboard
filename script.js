@@ -1,5 +1,5 @@
 var selectedRow = null;
-let url = "https://crudcrud.com/api/24bd2b703c444dce8a2c902ac3fdd964/Order-details";
+let url = "https://crudcrud.com/api/56f33288a5b94e5fb67a615011b3407c/candy-details";
 
 window.addEventListener('DOMContentLoaded', () => {
     axios.get(url)
@@ -14,7 +14,8 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 function onFormSubmit(e) {
-    e.preventDefault();
+    debugger;
+    //e.preventDefault();
     var formData = readFormData();
     if (selectedRow == null) {
         axios.post(url, formData)
@@ -32,26 +33,28 @@ function onFormSubmit(e) {
 
 function readFormData() {
     var formData = {};
-    formData["productCode"] = document.getElementById("productCode").value;
-    formData["product"] = document.getElementById("product").value;
-    formData["qty"] = document.getElementById("qty").value;
-    formData["perPrice"] = document.getElementById("perPrice").value;
+    formData["name"] = document.getElementById("name").value;
+    formData["description"] = document.getElementById("description").value;
+    formData["quantity"] = document.getElementById("quantity").value;
+    formData["price"] = document.getElementById("price").value;
     return formData;
 }
 
 function insertNewRecord(data) {
+    debugger;
     var table = document.getElementById("storeList").getElementsByTagName('tbody')[0];
     var newRow = table.insertRow(table.length);
     cell1 = newRow.insertCell(0);
-    cell1.innerHTML = data.productCode;
+    cell1.innerHTML = data.name;
     cell2 = newRow.insertCell(1);
-    cell2.innerHTML = data.product;
+    cell2.innerHTML = data.description;
     cell3 = newRow.insertCell(2);
-    cell3.innerHTML = data.qty;
+    cell3.innerHTML = data.quantity;
     cell4 = newRow.insertCell(3);
-    cell4.innerHTML = data.perPrice;
-    cell5 = newRow.insertCell(4);
-    cell5.innerHTML = `<button onClick="onBuy1(this)">Buy1</button> <button onClick="onBuy2(this)">Buy2</button> <button onClick="onBuy3(this)">Buy3</button>`;
+    cell4.innerHTML = data.price;
+    cell5 = newRow.insertCell(4);    
+    cell5.innerHTML = `<button onClick="onBuy1(this)">Buy1</button> <button onClick="onBuy2(this)">Buy2</button> <button onClick="onBuy3(this)">Buy3</button>`;    
+    
 }
 
 function onBuy1(button) {
@@ -61,7 +64,8 @@ function onBuy1(button) {
 
     if (quantity > 0) {
         quantity--;
-        quantityElement.innerHTML = quantity;
+        quantityElement.innerHTML = quantity;        
+        // Add any additional logic or API calls here to update the quantity in the backend
     } else {
         alert('No more candies available!');
     }
@@ -75,12 +79,14 @@ function onBuy2(button) {
     if (quantity >= 2) {
         quantity -= 2;
         quantityElement.innerHTML = quantity;
+        // Add any additional logic or API calls here to update the quantity in the backend
     } else {
         alert('Not enough candies available!');
     }
 }
 
 function onBuy3(button) {
+    debugger;
     var row = button.parentNode.parentNode;
     var quantityElement = row.cells[2];
     var quantity = parseInt(quantityElement.innerHTML);
@@ -88,16 +94,16 @@ function onBuy3(button) {
     if (quantity >= 3) {
         quantity -= 3;
         quantityElement.innerHTML = quantity;
+        // Add any additional logic or API calls here to update the quantity in the backend
     } else {
         alert('Not enough candies available!');
     }
 }
-
 function updateRecord(formData) {
-    selectedRow.cells[0].innerHTML = formData.productCode;
-    selectedRow.cells[1].innerHTML = formData.product;
-    selectedRow.cells[2].innerHTML = formData.qty;
-    selectedRow.cells[3].innerHTML = formData.perPrice;
+    selectedRow.cells[0].innerHTML = formData.name;
+    selectedRow.cells[1].innerHTML = formData.description;
+    selectedRow.cells[2].innerHTML = formData.quantity;
+    selectedRow.cells[3].innerHTML = formData.price;    
 }
 
 function onDelete(td) {
@@ -109,11 +115,9 @@ function onDelete(td) {
 }
 
 function resetForm() {
-    document.getElementById("productCode").value = '';
-    document.getElementById("product").value = '';
-    document.getElementById("qty").value = '';
-    document.getElementById("perPrice").value = '';
+    document.getElementById("name").value = '';
+    document.getElementById("description").value = '';
+    document.getElementById("quantity").value = '';
+    document.getElementById("price").value = '';
     selectedRow = null;
 }
-
-document.getElementById('resetBtn').addEventListener('click', resetForm);
